@@ -73,6 +73,15 @@
 	..()
 	health = Clamp(health, 0, maxHealth)
 
+/mob/living/simple_animal/handle_stomach()
+	spawn(0)
+		for(var/mob/living/M in stomach_contents)
+			if(M.loc != src)
+				stomach_contents.Remove(M)
+				continue
+		for(var/datum/vore_organ/organ in src.vore_organ_list())
+			organ.digest()
+
 /mob/living/simple_animal/Life()
 	if(..())
 		if(!client && !stat)
@@ -80,6 +89,15 @@
 
 			handle_automated_speech()
 		return 1
+
+	//Handle organs
+	for(var/mob/living/M in stomach_contents)
+		if(M.loc != src)
+			stomach_contents.Remove(M)
+			continue
+	for(var/datum/vore_organ/organ in src.vore_organ_list())
+		organ.digest()
+	//End organ handle
 
 /mob/living/simple_animal/handle_regular_status_updates()
 	if(..()) //alive

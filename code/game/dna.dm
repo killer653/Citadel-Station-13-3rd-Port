@@ -89,6 +89,51 @@
 			L[DNA_FACIAL_HAIR_COLOR_BLOCK] = sanitize_hexcolor(H.facial_hair_color)
 			L[DNA_SKIN_TONE_BLOCK] = construct_block(skin_tones.Find(H.skin_tone), skin_tones.len)
 			L[DNA_EYE_COLOR_BLOCK] = sanitize_hexcolor(H.eye_color)
+			if(H.heterochromia)
+				L[DNA_EYE_COLOR_TWO_BLOCK] = sanitize_hexcolor(H.heterochromia)
+				L[DNA_EYE_COLOR_SWITCH_BLOCK] = construct_block(2,2)
+			else
+				L[DNA_EYE_COLOR_TWO_BLOCK] = sanitize_hexcolor(H.eye_color)
+				L[DNA_EYE_COLOR_SWITCH_BLOCK] = construct_block(1,2)
+			var/colour_switch=0
+			if(special_color[1])
+				L[DNA_COLOR_ONE_BLOCK] = sanitize_hexcolor(special_color[1])
+				colour_switch+=1
+			else
+				L[DNA_COLOR_ONE_BLOCK] = random_string(DNA_BLOCK_SIZE,hex_characters)
+			if(special_color[2])
+				L[DNA_COLOR_TWO_BLOCK] = sanitize_hexcolor(special_color[2])
+				colour_switch+=2
+			else
+				L[DNA_COLOR_TWO_BLOCK] = random_string(DNA_BLOCK_SIZE,hex_characters)
+			if(special_color[3])
+				L[DNA_COLOR_THR_BLOCK] = sanitize_hexcolor(special_color[3])
+				colour_switch+=4
+			else
+				L[DNA_COLOR_THR_BLOCK] = random_string(DNA_BLOCK_SIZE,hex_characters)
+			L[DNA_COLOR_SWITCH_BLOCK] = construct_block(colour_switch+1,DNA_COLOR_SWITCH_MAX+1)
+			/*if(species_list[mutantrace])
+				L[DNA_MUTANTRACE_BLOCK] = construct_block(species_list.Find(mutantrace), species_list.len+1)
+			else
+				L[DNA_MUTANTRACE_BLOCK] = construct_block(species_list.len+1, species_list.len+1)*/
+			L[DNA_MUTANTRACE_BLOCK] = generate_race_block()
+			if(mutant_tails.Find(mutanttail))
+				L[DNA_MUTANTTAIL_BLOCK] = construct_block(mutant_tails.Find(mutanttail), mutant_tails.len+1)
+			else
+				L[DNA_MUTANTTAIL_BLOCK] = construct_block(mutant_tails.len+1, mutant_tails.len+1)
+			if(mutant_wings.Find(mutantwing))
+				L[DNA_MUTANTWING_BLOCK] = construct_block(mutant_wings.Find(mutantwing), mutant_wings.len+1)
+			else
+				L[DNA_MUTANTWING_BLOCK] = construct_block(mutant_wings.len+1, mutant_wings.len+1)
+			L[DNA_WINGCOLOR_BLOCK] = sanitize_hexcolor(wingcolor)
+			L[DNA_TAUR_BLOCK] = construct_block(taur+1, 2)
+
+			var/cock_block=0
+			if(cock["has"])
+				cock_block+=1
+			if(vagina)
+				cock_block+=2
+			L[DNA_COCK_BLOCK] = construct_block(cock_block+1, 4)
 
 	for(var/i=1, i<=DNA_UNI_IDENTITY_BLOCKS, i++)
 		if(L[i])	. += L[i]
@@ -297,6 +342,50 @@
 		H.eye_color = sanitize_hexcolor(getblock(structure, DNA_EYE_COLOR_BLOCK))
 		H.facial_hair_style = facial_hair_styles_list[deconstruct_block(getblock(structure, DNA_FACIAL_HAIR_STYLE_BLOCK), facial_hair_styles_list.len)]
 		H.hair_style = hair_styles_list[deconstruct_block(getblock(structure, DNA_HAIR_STYLE_BLOCK), hair_styles_list.len)]
+		var/mutantrace_c = deconstruct_block(getblock(structure, DNA_MUTANTRACE_BLOCK), species_list.len+1)
+		if(mutantrace_c<=species_list.len && kpcode_race_restricted(species_list[mutantrace_c])!=2)
+			C.dna.species=kpcode_race_get(species_list[mutantrace_c])
+		var/mutanttail_c = deconstruct_block(getblock(structure, DNA_MUTANTTAIL_BLOCK), mutant_tails.len+1)
+		if(mutanttail_c<=mutant_tails.len)
+			C.dna.mutanttail=mutant_tails[mutanttail_c]
+		else
+			C.dna.mutanttail=null
+		var/mutantwing_c = deconstruct_block(getblock(structure, DNA_MUTANTWING_BLOCK), mutant_wings.len+1)
+		if(mutantwing_c<=mutant_wings.len)
+			C.dna.mutantwing=mutant_wings[mutantwing_c]
+		else
+			C.dna.mutantwing=null
+
+		C.dna.wingcolor = sanitize_hexcolor(getblock(structure, DNA_WINGCOLOR_BLOCK))
+
+		var/colour_switch=deconstruct_block(getblock(structure, DNA_COLOR_SWITCH_BLOCK), DNA_COLOR_SWITCH_MAX+1)
+		colour_switch-=1
+		if(colour_switch&1)
+			C.dna.special_color[1]=sanitize_hexcolor(getblock(structure, DNA_COLOR_ONE_BLOCK))
+		else
+			C.dna.special_color[1]=null
+		if(colour_switch&2)
+			C.dna.special_color[2]=sanitize_hexcolor(getblock(structure, DNA_COLOR_TWO_BLOCK))
+		else
+			C.dna.special_color[2]=null
+		if(colour_switch&4)
+			C.dna.special_color[3]=sanitize_hexcolor(getblock(structure, DNA_COLOR_THR_BLOCK))
+		else
+			C.dna.special_color[3]=null
+
+		var/cock_block=deconstruct_block(getblock(structure, DNA_COCK_BLOCK), 4)
+		cock_block-=1
+		if(!(cock_block&1))
+			C.dna.cock["has"]=0
+		else if(!C.dna.cock["has"]&&(cock_block&1))
+			C.dna.cock["has"]=1
+
+		if(cock_block&2)
+			C.dna.vagina=1
+		else
+			C.dna.vagina=0
+
+		C.dna.taur=deconstruct_block(getblock(structure, DNA_TAUR_BLOCK), 2)-1
 
 		H.update_body()
 		H.update_hair()
