@@ -75,7 +75,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 				if(11)	underwear = "Ladies Kinky"
 				if(12)	underwear = "Tankini"
 				if(13)	underwear = "Nude"
-		if(!(pref_species in species_list))
+		//if(!(pref_species in species_list))
+		if(!(pref_species))
 			pref_species = new /datum/species/human()
 	return
 
@@ -94,6 +95,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	var/needs_update = savefile_needs_update(S)
 	if(needs_update == -2)		//fatal, can't load any data
 		return 0
+
+	if(!S["species"] || !config.mutant_races)
+		S["species"]		<< new /datum/species/human()
+	//if(!S["mutant_color"] || S["mutant_color"] == "#000")
+	//	S["mutant_color"]	<< "#FFF"
 
 	//general preferences
 	S["ooccolor"]			>> ooccolor
@@ -158,7 +164,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		return 0
 
 	//Species
-	var/species_name
+	/*var/species_name
 	S["species"]			>> species_name
 	if(config.mutant_races && species_name && (species_name in roundstart_species))
 		var/newtype = roundstart_species[species_name]
@@ -167,7 +173,12 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		pref_species = new /datum/species/human()
 
 	if(!S["features["mcolor"]"] || S["features["mcolor"]"] == "#000")
-		S["features["mcolor"]"]	<< "#FFF"
+		S["features["mcolor"]"]	<< "#FFF"*/
+
+	if(!S["species"] || !config.mutant_races)
+		S["species"]		<< new /datum/species/human()
+	//if(!S["mutant_color"] || S["mutant_color"] == "#000")
+	//	S["mutant_color"]	<< "#FFF"
 
 	//Character
 	S["OOC_Notes"]			>> metadata

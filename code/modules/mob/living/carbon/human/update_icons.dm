@@ -177,7 +177,7 @@ Please contact me on #coderbus IRC. ~Carnie x
 	if(dna)	// didn't want to have a duplicate if(dna) here, but due to the ordering of the code this was the only way
 		dna.species.handle_body(src)
 
-	//Narky tail code
+	//Tail code
 	remove_overlay(TAIL_LAYER)
 	var/list/t_standing	= list()
 	//var/icon/chk=new/icon('icons/mob/tail.dmi')

@@ -24,6 +24,7 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 
 /datum/preferences
 	//doohickeys for savefiles
+	var/ckey = "null"
 	var/path
 	var/default_slot = 1				//Holder so it doesn't default to slot 1, rather the last one used
 	var/max_save_slots = 3
@@ -290,9 +291,9 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 
 					dat += "</td>"
 
-				if(config.mutant_races) //We don't allow mutant bodyparts for humans either unless this is true.
+				//if(config.mutant_races) //We don't allow mutant bodyparts for humans either unless this is true.
 
-					if((MUTCOLORS in pref_species.specflags) || (MUTCOLORS_PARTSONLY in pref_species.specflags))
+					/*if((MUTCOLORS in pref_species.specflags) || (MUTCOLORS_PARTSONLY in pref_species.specflags))
 
 						dat += "<td valign='top' width='21%'>"
 
@@ -302,7 +303,7 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 
 						dat += "</td>"
 
-					/*if("tail_lizard" in pref_species.mutant_bodyparts)
+					if("tail_lizard" in pref_species.mutant_bodyparts)
 						dat += "<td valign='top' width='7%'>"
 
 						dat += "<h3>Tail</h3>"
@@ -863,15 +864,13 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 
 					if("species")
 
-						var/result = input(user, "Select a species", "Species Selection") as null|anything in roundstart_species
-
+						var/result = input(user, "Select a species", "Species Selection") as null|anything in kpcode_race_getlist(ckey)
 						if(result)
-							var/newtype = roundstart_species[result]
+							var/newtype = species_list[result]
 							pref_species = new newtype()
-							//Now that we changed our species, we must verify that the mutant colour is still allowed.
-							var/temp_hsv = RGBtoHSV(features["mcolor"])
-							if(features["mcolor"] == "#000" || (!(MUTCOLORS_PARTSONLY in pref_species.specflags) && ReadHSV(temp_hsv)[3] < ReadHSV("#7F7F7F")[3]))
-								features["mcolor"] = pref_species.default_color
+							//if(mutant_color == "#000")
+							//	mutant_color = pref_species.default_color
+
 					if("mutant_color")
 						var/new_mutantcolor = input(user, "Choose your character's alien/mutant color:", "Character Preference") as color|null
 						if(new_mutantcolor)
