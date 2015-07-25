@@ -27,7 +27,7 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 	var/ckey = "null"
 	var/path
 	var/default_slot = 1				//Holder so it doesn't default to slot 1, rather the last one used
-	var/max_save_slots = 3
+	var/max_save_slots = 6
 
 	//non-preference stuff
 	var/muted = 0
