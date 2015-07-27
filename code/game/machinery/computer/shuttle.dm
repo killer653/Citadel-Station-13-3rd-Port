@@ -135,6 +135,7 @@
 	verb_say = "flashes"
 	verb_ask = "flashes"
 	verb_exclaim = "flashes"
+	verb_whimsies = "flashes"
 	var/temp = null
 	var/reqtime = 0 //Cooldown for requisitions - Quarxink
 	var/hacked = 0
@@ -155,6 +156,7 @@
 	verb_say = "flashes"
 	verb_ask = "flashes"
 	verb_exclaim = "flashes"
+	verb_whimsies = "flashes"
 	var/temp = null
 	var/reqtime = 0 //Cooldown for requisitions - Quarxink
 	var/last_viewed_group = "categories"

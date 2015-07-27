@@ -2,7 +2,7 @@
 	name = "Anomaly: Pyroclastic"
 	typepath = /datum/round_event/anomaly/anomaly_pyro
 	max_occurrences = 5
-	weight = 20
+	weight = 10 //you're barely any less worse than a flux
 
 /datum/round_event/anomaly/anomaly_pyro
 	startWhen = 10
