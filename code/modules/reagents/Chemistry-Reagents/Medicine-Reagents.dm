@@ -212,15 +212,22 @@
 /datum/reagent/medicine/salglu_solution
 	name = "Saline-Glucose Solution"
 	id = "salglu_solution"
-	description = "Has a 33% chance per metabolism cycle to heal brute and burn damage."
+	description = "Heals brute and burn damage slowly. Overdose on 40 units within the system, as a side effect it also makes you a bit hungry."
 	reagent_state = LIQUID
 	color = "#C8A5DC"
+	overdose_threshold = 45
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 
 /datum/reagent/medicine/salglu_solution/on_mob_life(var/mob/living/M as mob)
-	if(prob(33))
-		M.adjustBruteLoss(-0.5*REM)
-		M.adjustFireLoss(-0.5*REM)
+	M.adjustBruteLoss(-0.5*REM)
+	M.adjustFireLoss(-0.5*REM)
+	M.nutrition-= 1
+	..()
+	return
+
+datum/reagent/medicine/salglu_solution/overdose_process(var/mob/living/M as mob)
+	M.adjustBruteLoss(1*REM)
+	M.adjustFireLoss(1*REM)
 	..()
 	return
 
@@ -704,9 +711,9 @@
 		M.adjustToxLoss(-1*REM)
 		M.adjustBruteLoss(-1*REM)
 		M.adjustFireLoss(-1*REM)
-	M.AdjustParalysis(-3)
-	M.AdjustStunned(-3)
-	M.AdjustWeakened(-3)
+	M.AdjustParalysis(-4)
+	M.AdjustStunned(-4)
+	M.AdjustWeakened(-4)
 	M.adjustStaminaLoss(-5*REM)
 	..()
 
@@ -757,10 +764,12 @@ datum/reagent/medicine/dexalin
 	description = "Heals oxygen damage."
 	reagent_state = LIQUID
 	color = "#C8A5DC"
-	overdose_threshold = 30
+	overdose_threshold = 60
 
 datum/reagent/medicine/dexalin/on_mob_life(var/mob/living/M as mob)
 	M.adjustOxyLoss(-2*REM)
+	if(holder.has_reagent("lexorin"))
+		holder.remove_reagent("lexorin", 5*REM) //goof you faggot you forgot this
 	..()
 	return
 
@@ -769,13 +778,34 @@ datum/reagent/medicine/dexalin/overdose_process(var/mob/living/M as mob)
 	..()
 	return
 
+datum/reagent/medicine/dexalinp
+	name = "Dexalin Plus"
+	id = "dexalinp"
+	description = "Heals oxygen damage at an increased rate compared to normal dexalin."
+	reagent_state = LIQUID
+	color = "#C8A5DC"
+	overdose_threshold = 60
+
+datum/reagent/medicine/dexalinp/on_mob_life(var/mob/living/M as mob)
+	M.adjustOxyLoss(-15*REM)
+	if(holder.has_reagent("lexorin"))
+		holder.remove_reagent("lexorin", 10*REM)
+	..()
+	return
+
+datum/reagent/medicine/dexalinp/overdose_process(var/mob/living/M as mob)
+	M.adjustOxyLoss(20*REM) // due to it's PLUSY nature, overdosing on it is not so bad, but it'll still fuck you up
+	..()
+	return
+
+
 datum/reagent/medicine/kelotane
 	name = "Kelotane"
 	id = "kelotane"
 	description = "Heals burn damage."
 	reagent_state = LIQUID
 	color = "#C8A5DC"
-	overdose_threshold = 30
+	overdose_threshold = 60
 
 datum/reagent/medicine/kelotane/on_mob_life(var/mob/living/M as mob)
 	M.adjustFireLoss(-2*REM)
@@ -794,7 +824,7 @@ datum/reagent/medicine/antitoxin
 	description = "Heals toxin damage."
 	reagent_state = LIQUID
 	color = "#C8A5DC"
-	overdose_threshold = 30
+	overdose_threshold = 60
 
 datum/reagent/medicine/antitoxin/on_mob_life(var/mob/living/M as mob)
 	M.adjustToxLoss(-2*REM)
@@ -826,24 +856,21 @@ datum/reagent/medicine/inaprovaline/on_mob_life(var/mob/living/M as mob)
 datum/reagent/medicine/tricordrazine
 	name = "Tricordrazine"
 	id = "tricordrazine"
-	description = "Chance to heal 1 of each damage type."
+	description = "A stimulant that slowly heals the body of most ailments"
 	reagent_state = LIQUID
 	color = "#C8A5DC"
-	overdose_threshold = 30
+	overdose_threshold = 45 // hey hey let's not make this too low
 
 datum/reagent/medicine/tricordrazine/on_mob_life(var/mob/living/M as mob)
-	if(prob(80))
-		M.adjustBruteLoss(-1*REM)
-		M.adjustFireLoss(-1*REM)
-		M.adjustOxyLoss(-1*REM)
-		M.adjustToxLoss(-1*REM)
+	M.adjustBruteLoss(-0.3*REM)
+	M.adjustFireLoss(-0.3*REM)
+	M.adjustToxLoss(-0.3*REM)
 	..()
 	return
 
 datum/reagent/medicine/tricordrazine/overdose_process(var/mob/living/M as mob)
-	M.adjustToxLoss(2*REM)
-	M.adjustOxyLoss(2*REM)
-	M.adjustBruteLoss(2*REM)
-	M.adjustFireLoss(2*REM)
+	M.adjustToxLoss(0.6*REM)
+	M.adjustBruteLoss(0.6*REM)
+	M.adjustFireLoss(0.6*REM)
 	..()
 	return

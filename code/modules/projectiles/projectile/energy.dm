@@ -122,7 +122,7 @@
 	icon_state = "toxin"
 	damage = 5
 	damage_type = TOX
-	weaken = 5
+	weaken = 4
 	range = 7
 
 /obj/item/projectile/energy/bolt //ebow bolts
@@ -131,11 +131,12 @@
 	damage = 15
 	damage_type = TOX
 	nodamage = 0
-	weaken = 5
+	weaken = 4
 	stutter = 5
 
 /obj/item/projectile/energy/bolt/large
 	damage = 20
+	weaken = 5
 
 /obj/item/ammo_casing/energy/plasma
 	projectile_type = /obj/item/projectile/plasma

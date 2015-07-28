@@ -48,14 +48,13 @@
 	damage = 3
 	stamina = 25
 
-/obj/item/projectile/bullet/stunshot //taser slugs for shotguns, nothing special
+/obj/item/projectile/bullet/stunshot //taser slugs for shotguns, completely nonlethal
 	name = "stunshot"
-	damage = 5
-	stun = 5
-	weaken = 5
+	nodamage = 1
+	stun = 6
+	weaken = 6
 	stutter = 5
 	jitter = 20
-	range = 7
 	icon_state = "spark"
 	color = "#FFFF00"
 

@@ -216,8 +216,8 @@ obj/item/projectile/kinetic/New()
 	var/pressure = environment.return_pressure()
 	if(pressure < 30)
 		name = "full strength plasma blast"
-		damage *= 3
-		range += 3
+		damage *= 4
+		range += 5
 	..()
 
 /obj/item/projectile/plasma/on_hit(var/atom/target)
@@ -229,6 +229,7 @@ obj/item/projectile/kinetic/New()
 /obj/item/projectile/plasma/adv
 	range = 2
 
+
 /obj/item/projectile/plasma/adv/mech
 	damage = 10
-	range = 3
+	range = 4
