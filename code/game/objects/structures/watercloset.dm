@@ -161,6 +161,7 @@
 	if(on)
 		for (var/atom/movable/G in loc)
 			wash(G)
+			M.color = null
 	else
 		if(istype(loc, /turf/simulated))
 			var/turf/simulated/tile = loc

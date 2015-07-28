@@ -13,6 +13,7 @@
 	result = "rezadone"
 	required_reagents = list("carpotoxin" = 1, "cryptobiolin" = 1, "copper" = 1)
 	result_amount = 3
+	mix_message = "The solution emits a robust scent."
 
 /datum/chemical_reaction/spaceacillin
 	name = "Spaceacillin"
@@ -193,5 +194,27 @@
 	required_reagents = list("stable_plasma" = 1, "acetone" = 1, "mutagen" = 1)
 	result_amount = 3
 
+/datum/chemical_reaction/omnizine
+	name = "Omnizine"
+	id = "omnizine"
+	result = "omnizine"
+	required_reagents = list("charcoal" = 1, "salglu_solution" = 1, "dexalinp" = 1)
+	result_amount = 1
+	mix_message = "The solution gives off a refreshing scent."
 
+/datum/chemical_reaction/dexalin
+	name = "Dexalin"
+	id = "dexalin"
+	result = "dexalin"
+	required_reagents = list("oxygen" = 2)
+	required_catalysts = list("plasma" = 5)
+	result_amount = 1
 
+/datum/chemical_reaction/dexalinp
+	name = "Dexalin Plus"
+	id = "dexalinp"
+	result = "dexalinp"
+	required_reagents = list("dexalin" = 1, "carbon" = 1, "iron" = 1)
+	result_amount = 3
+	required_temp = 450
+	mix_message = "The solution emits a blast of heated air."

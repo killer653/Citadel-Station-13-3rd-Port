@@ -637,3 +637,17 @@
 	new /obj/item/stack/medical/bruise_pack(src)
 	new /obj/item/stack/medical/ointment(src)
 	new /obj/item/weapon/reagent_containers/hypospray/medipen(src)
+
+/obj/item/weapon/storage/box/premiumstunbox
+	name = "box of stunshot casings"
+	desc = "A box filled with stunshot casings"
+
+/obj/item/weapon/storage/box/premiumstunbox/New()
+	..()
+	new /obj/item/ammo_casing/shotgun/stunslug(src)
+	new /obj/item/ammo_casing/shotgun/stunslug(src)
+	new /obj/item/ammo_casing/shotgun/stunslug(src)
+	new /obj/item/ammo_casing/shotgun/stunslug(src)
+	new /obj/item/ammo_casing/shotgun/stunslug(src)
+	new /obj/item/ammo_casing/shotgun/stunslug(src)
+	new /obj/item/ammo_casing/shotgun/stunslug(src)

@@ -2,10 +2,10 @@
 	name = "Anomaly: Vortex"
 	typepath = /datum/round_event/anomaly/anomaly_vortex
 	max_occurrences = 2
-	weight = 5
+	weight = 3
 
 /datum/round_event/anomaly/anomaly_vortex
-	startWhen = 10
+	startWhen = 3 //why the fuck was this 10 before, it could falseflag engineers already in the area
 	announceWhen = 3
 	endWhen = 95
 

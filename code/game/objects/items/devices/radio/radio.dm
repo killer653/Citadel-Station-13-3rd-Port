@@ -342,7 +342,8 @@
 			"verb_say" = M.verb_say,
 			"verb_ask" = M.verb_ask,
 			"verb_exclaim" = M.verb_exclaim,
-			"verb_yell" = M.verb_yell
+			"verb_yell" = M.verb_yell,
+			"verb_whimsies" = M.verb_whimsies
 			)
 		signal.frequency = freqnum // Quick frequency set
 		Broadcast_Message(M, voicemask,
@@ -437,7 +438,8 @@
 		"verb_say" = M.verb_say,
 		"verb_ask" = M.verb_ask,
 		"verb_exclaim" = M.verb_exclaim,
-		"verb_yell" = M.verb_yell
+		"verb_yell" = M.verb_yell,
+		"verb_whimsies" = M.verb_whimsies
 		)
 	signal.frequency = freqnum // Quick frequency set
 	for(var/obj/machinery/telecomms/receiver/R in telecomms_list)
