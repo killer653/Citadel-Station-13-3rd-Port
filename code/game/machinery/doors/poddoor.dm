@@ -5,6 +5,7 @@
 	icon_state = "closed"
 	var/id = 1
 	var/auto_close = 0 // Time in seconds to automatically close when opened, 0 if it doesn't.
+	layer = 2.5
 	sub_door = 1
 	explosion_block = 3
 	heat_proof = 1

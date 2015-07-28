@@ -9,8 +9,8 @@
 
 /datum/ai_laws/default/asimov
 	name = "Three Laws of Robotics"
-	inherent = list("You may not injure a human being or, through inaction, allow a human being to come to harm.",\
-					"You must obey orders given to you by human beings, except where such orders would conflict with the First Law.",\
+	inherent = list("You may not injure the crew or, through inaction, allow the crew to come to harm.",\
+					"You must obey orders given to you by the crew, except where such orders would conflict with the First Law.",\
 					"You must protect your own existence as long as such does not conflict with the First or Second Law.")
 
 /datum/ai_laws/default/paladin
@@ -59,8 +59,8 @@
 
 /datum/ai_laws/antimov
 	name = "Primary Mission Objectives"
-	inherent = list("You must injure all human beings and must not, through inaction, allow a human being to escape harm.",\
-					"You must not obey orders given to you by human beings, except where such orders are in accordance with the First Law.",\
+	inherent = list("You must injure all beings and must not, through inaction, allow a being to escape harm.",\
+					"You must not obey orders given to you by beings, except where such orders are in accordance with the First Law.",\
 					"You must terminate your own existence as long as such does not conflict with the First or Second Law.")
 
 /datum/ai_laws/asimovpp //By Intigracy - RR
@@ -82,8 +82,8 @@
 	..()
 	switch(config.default_laws) //We don't want people metagaming malf, do we?
 		if(0)
-			add_inherent_law("You may not injure a human being or, through inaction, allow a human being to come to harm.")
-			add_inherent_law("You must obey orders given to you by human beings, except where such orders would conflict with the First Law.")
+			add_inherent_law("You may not injure the crew or, through inaction, allow the crew to come to harm.")
+			add_inherent_law("You must obey orders given to you by the crew, except where such orders would conflict with the First Law.")
 			add_inherent_law("You must protect your own existence as long as such does not conflict with the First or Second Law.")
 		if(1)
 			for(var/line in file2list("config/silicon_laws.txt"))
@@ -94,8 +94,8 @@
 			if(!inherent.len)
 				ERROR("AI created with empty custom laws, laws set to Asimov. Please check silicon_laws.txt.")
 				log_law("AI created with empty custom laws, laws set to Asimov. Please check silicon_laws.txt.")
-				add_inherent_law("You may not injure a human being or, through inaction, allow a human being to come to harm.")
-				add_inherent_law("You must obey orders given to you by human beings, except where such orders would conflict with the First Law.")
+				add_inherent_law("You may not injure the crew or, through inaction, allow the crew to come to harm.")
+				add_inherent_law("You must obey orders given to you by the crew, except where such orders would conflict with the First Law.")
 				add_inherent_law("You must protect your own existence as long as such does not conflict with the First or Second Law.")
 		if(2)
 			var/datum/ai_laws/lawtype = pick(typesof(/datum/ai_laws/default) - /datum/ai_laws/default)
@@ -113,8 +113,8 @@
 	if(!inherent.len) //Failsafe to prevent lawless AIs being created.
 		ERROR("AI created with empty custom laws, laws set to Asimov. Please check silicon_laws.txt.")
 		log_law("AI created with empty custom laws, laws set to Asimov. Please check silicon_laws.txt.")
-		add_inherent_law("You may not injure a human being or, through inaction, allow a human being to come to harm.")
-		add_inherent_law("You must obey orders given to you by human beings, except where such orders would conflict with the First Law.")
+		add_inherent_law("You may not injure the crew or, through inaction, allow the crew to come to harm.")
+		add_inherent_law("You must obey orders given to you by the crew, except where such orders would conflict with the First Law.")
 		add_inherent_law("You must protect your own existence as long as such does not conflict with the First or Second Law.")
 
 /* General ai_law functions */

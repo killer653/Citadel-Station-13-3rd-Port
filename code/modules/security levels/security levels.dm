@@ -28,19 +28,23 @@
 						FA.update_icon()
 			if(SEC_LEVEL_BLUE)
 				if(security_level < SEC_LEVEL_BLUE)
-					minor_announce(config.alert_desc_blue_upto, "Attention! Security level elevated to blue:",1)
+					minor_announce(config.alert_desc_blue_upto, "Attention! Security level elevated to blue:")
 				else
 					minor_announce(config.alert_desc_blue_downto, "Attention! Security level lowered to blue:")
 				security_level = SEC_LEVEL_BLUE
 				for(var/obj/machinery/firealarm/FA in world)
 					if(FA.z == ZLEVEL_STATION)
 						FA.update_icon()
+				for(var/mob/M in player_list)
+					M << 'sound/misc/alertklaxon_clean.ogg'
 			if(SEC_LEVEL_RED)
 				if(security_level < SEC_LEVEL_RED)
-					minor_announce(config.alert_desc_red_upto, "Attention! Code red!",1)
+					minor_announce(config.alert_desc_red_upto, "Attention! Code red!")
 				else
 					minor_announce(config.alert_desc_red_downto, "Attention! Code red!")
 				security_level = SEC_LEVEL_RED
+				for(var/mob/M in player_list)
+					M << 'sound/misc/voyalert.ogg'
 
 				/*	- At the time of commit, setting status displays didn't work properly
 				var/obj/machinery/computer/communications/CC = locate(/obj/machinery/computer/communications,world)
@@ -51,7 +55,9 @@
 					if(FA.z == ZLEVEL_STATION)
 						FA.update_icon()
 			if(SEC_LEVEL_DELTA)
-				minor_announce(config.alert_desc_delta, "Attention! Delta security level reached!",1)
+				minor_announce(config.alert_desc_delta, "Attention! Delta security level reached!")
+				for(var/mob/M in player_list)
+					M << 'sound/misc/tas_red_alert.ogg'
 				security_level = SEC_LEVEL_DELTA
 				for(var/obj/machinery/firealarm/FA in world)
 					if(FA.z == ZLEVEL_STATION)

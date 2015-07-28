@@ -190,6 +190,7 @@
 	desc = "A headset used by the upper echelons of Nanotrasen. \nTo access the centcom channel, use :y."
 	icon_state = "cent_headset"
 	item_state = "headset"
+	flags = EARBANGPROTECT
 	keyslot = new /obj/item/device/encryptionkey/headset_com
 	keyslot2 = new /obj/item/device/encryptionkey/headset_cent
 

@@ -633,3 +633,16 @@ var/list/admin_verbs_hideable = list(
 
 							testing("Spawned test mob with name \"[mob.name]\" at [tile.x],[tile.y],[tile.z]")
 			while (!area && --j > 0)
+	/*
+/client/admins/proc/doorlayerfix()
+	set category = "Special Verbs"
+	set name="Door Fix"
+	set desc="Fix Door layering"
+	for(var/obj/machinery/door/firedoor/W in world)
+		if(W.layer == 2.7)
+			W.layer = 2.6
+	for(var/obj/machinery/door/poddoor/X in world)
+		if(X.layer == 2.7)
+			X.layer = 2.5
+	message_admins("[key_name_admin(usr)] activated Door fixy button")
+	feedback_add_details("admin_verb","DFB") */
