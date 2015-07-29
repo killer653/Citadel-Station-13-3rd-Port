@@ -627,7 +627,7 @@
 
 	//Check for nonhuman scum
 	if(dna && dna.species.id && dna.species.id != "human")
-		threatcount += 4
+		threatcount += 1
 
 	//Loyalty implants imply trustworthyness
 	if(isloyal(src))
@@ -635,7 +635,7 @@
 
 	//Agent cards lower threatlevel.
 	if(istype(idcard, /obj/item/weapon/card/id/syndicate))
-		threatcount -= 1
+		threatcount -= 2
 
 	return threatcount
 
