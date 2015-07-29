@@ -57,6 +57,13 @@
 /mob/living/carbon/human/calculate_affecting_pressure(var/pressure)
 	if((wear_suit && (wear_suit.flags & STOPSPRESSUREDMAGE)) && (head && (head.flags & STOPSPRESSUREDMAGE)))
 		return ONE_ATMOSPHERE
+
+	if(istype(loc, /mob/living/carbon/human))
+		return ONE_ATMOSPHERE || STOPSPRESSUREDMAGE
+
+	if(istype(loc, /mob/living/carbon/alien))
+		return ONE_ATMOSPHERE || STOPSPRESSUREDMAGE
+
 	else
 		return pressure
 
@@ -136,6 +143,11 @@
 //This proc returns a number made up of the flags for body parts which you are protected on. (such as HEAD, CHEST, GROIN, etc. See setup.dm for the full list)
 /mob/living/carbon/human/proc/get_heat_protection_flags(temperature) //Temperature is the temperature you're being exposed to.
 	var/thermal_protection_flags = 0
+	if(istype(loc, /mob/living/carbon/human))
+		return 1
+
+	if(istype(loc, /mob/living/carbon/alien))
+		return 1
 	//Handle normal clothing
 	if(head)
 		if(head.max_heat_protection_temperature && head.max_heat_protection_temperature >= temperature)
@@ -219,6 +231,12 @@
 
 	if(dna.check_mutation(COLDRES))
 		return 1 //Fully protected from the cold.
+
+	if(istype(loc, /mob/living/carbon/human))
+		return 1
+
+	if(istype(loc, /mob/living/carbon/alien))
+		return 1
 
 	if(dna && COLDRES in dna.species.specflags)
 		return 1
