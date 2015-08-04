@@ -606,7 +606,7 @@
 			if(judgebot.check_for_weapons(r_hand))
 				threatcount += 4
 			if(judgebot.check_for_weapons(belt))
-				threatcount += 2
+				threatcount += 3
 
 	//Check for arrest warrant
 	if(judgebot.check_records)
@@ -617,7 +617,7 @@
 				if("*Arrest*")
 					threatcount += 5
 				if("Incarcerated")
-					threatcount += 3
+					threatcount += 2
 				if("Parolled")
 					threatcount += 2
 
@@ -627,7 +627,7 @@
 
 	//Check for nonhuman scum
 	if(dna && dna.species.id && dna.species.id != "human")
-		threatcount += 4
+		threatcount += 1
 
 	//Loyalty implants imply trustworthyness
 	if(isloyal(src))

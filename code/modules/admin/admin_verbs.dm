@@ -60,7 +60,9 @@ var/list/admin_verbs_admin = list(
 	/client/proc/cmd_admin_local_narrate,	//sends text to all mobs within view of atmo
 	/client/proc/cmd_admin_create_centcom_report,
 	/client/proc/check_words,			/*displays cult-words*/
-	/client/proc/reset_all_tcs			/*resets all telecomms scripts*/
+	/client/proc/reset_all_tcs,			/*resets all telecomms scripts*/
+	/client/proc/doorfix,				/*fixes doors*/
+	/datum/admins/proc/doorfix			/*probably also does too*/
 	)
 var/list/admin_verbs_ban = list(
 	/client/proc/unban_panel,
@@ -633,16 +635,16 @@ var/list/admin_verbs_hideable = list(
 
 							testing("Spawned test mob with name \"[mob.name]\" at [tile.x],[tile.y],[tile.z]")
 			while (!area && --j > 0)
-	/*
-/client/admins/proc/doorlayerfix()
-	set category = "Special Verbs"
-	set name="Door Fix"
-	set desc="Fix Door layering"
+
+/client/proc/doorfix()
+	set category = "Admin"
+	set name = "Door Fixing"
+	set desc = "Fix fire and blast doors"
 	for(var/obj/machinery/door/firedoor/W in world)
 		if(W.layer == 2.7)
 			W.layer = 2.6
 	for(var/obj/machinery/door/poddoor/X in world)
 		if(X.layer == 2.7)
 			X.layer = 2.5
-	message_admins("[key_name_admin(usr)] activated Door fixy button")
-	feedback_add_details("admin_verb","DFB") */
+	message_admins("[key_name_admin(usr)] activated Door fix button")
+	feedback_add_details("admin_verb","DFB")
