@@ -242,7 +242,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["job_engsec_low"]		>> job_engsec_low
 
 	//Flavour Text
-	//S["flavor_texts_general"]	<< flavor_texts["general"]
+	S["flavor_texts_general"]	<< flavor_texts["general"]
 
 	return 1
 
@@ -389,7 +389,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["job_engsec_low"]		<< job_engsec_low
 
 	//Flavour Text
-	//S["flavor_texts_general"]	<< flavor_texts["general"]
+	S["flavor_texts_general"]	<< flavor_texts["general"]
 
 	return 1
 
