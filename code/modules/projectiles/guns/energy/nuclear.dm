@@ -13,10 +13,11 @@
 	update_icon()
 
 /obj/item/weapon/gun/energy/gun/hos
-	desc = "This is a expensive, modern recreation of a antique laser gun. This gun has several unique firemodes, but lacks the ability to recharge over time."
+	desc = "This is a expensive, modern recreation of a antique laser gun. This gun has several unique firemodes, but lacks the ability to recharge over time. It is specially fitted for Security use only."
 	icon_state = "hoslaser"
 	item_state = null
 	force = 10
+	pin = /obj/item/device/firing_pin/implant/loyalty
 	ammo_type = list(/obj/item/ammo_casing/energy/electrode/hos, /obj/item/ammo_casing/energy/laser/hos, /obj/item/ammo_casing/energy/disabler)
 
 /obj/item/weapon/gun/energy/gun/dragnet
