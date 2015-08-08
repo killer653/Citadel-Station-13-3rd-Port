@@ -95,12 +95,6 @@
 	desc = "best trophy ever"
 	icon_state = "xenobutt"
 	item_state = "xenobutt"
-	throwforce = 5
-	force = 5
-	hitsound = 'sound/misc/fart.ogg'
-	throwhitsound = 'sound/misc/fart.ogg' //woo
-	body_parts_covered = HEAD
-	slot_flags = SLOT_HEAD
 
 /obj/item/robot_parts/robobutt
 	name = "robot butt"
@@ -111,8 +105,6 @@
 	force = 5
 	hitsound = 'sound/misc/fart.ogg'
 	throwhitsound = 'sound/misc/fart.ogg' //woo
-	body_parts_covered = HEAD
-	slot_flags = SLOT_HEAD
 
 /obj/item/organ/butt/attackby(var/obj/item/W, mob/user as mob, params) // copypasting bot manufucturing process, im a lazy fuck
 
