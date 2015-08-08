@@ -19,6 +19,27 @@
 	time = 100
 	category = CAT_WEAPON
 
+/datum/table_recipe/pin_removal_ghetto
+	name = "Ghetto Pin Removal"
+	result = /obj/item/weapon/gun
+	reqs = list(/obj/item/weapon/gun = 1)
+	parts = list(/obj/item/weapon/gun = 1)
+	tools = list(/obj/item/weapon/weldingtool, /obj/item/weapon/screwdriver, /obj/item/weapon/wirecutters)
+	time = 300
+	category = CAT_WEAPON
+//		if(prob(33))
+//			user.visible_message("<span class='warning'>[user] accidentally melts into the weapon's power cell housing, it's starting to overload!</span>", "<span class='warning'>You accidentally breach the weapon's powercell! The gun whines as it starts overloading!</span>")
+//			sleep(10)
+//			user.visible_message("<span class='warning'>The weapon explodes!</span>",)
+//			explosion(ground_zero, -1, -1, 1, 2)
+//			var/obj/effect/decal/remains/robot = new(W.loc)
+//			del(W)
+
+//		else
+//			user.visible_message("<span class='warning'>[user] narrowly avoids overloading the weapon's powercell!</span>")
+//	return 1
+
+
 /datum/table_recipe/IED
 	name = "IED"
 	result = /obj/item/weapon/grenade/iedcasing
