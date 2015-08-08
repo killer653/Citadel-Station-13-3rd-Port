@@ -715,3 +715,13 @@
 	construction_time=150
 	build_path = /obj/item/drone_shell
 	category = list("Misc")
+
+/datum/design/robobutt
+	name = "Robot butt"
+	id = "robobutt"
+	req_tech = list("biotech" = 2)
+	build_type = MECHFAB
+	build_path =/obj/item/robot_parts/robobutt
+	materials = list(MAT_METAL=500)
+	construction_time = 50
+	category = list("Misc")
