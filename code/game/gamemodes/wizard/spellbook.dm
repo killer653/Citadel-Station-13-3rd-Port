@@ -102,10 +102,11 @@
 	spell_type = /obj/effect/proc_holder/spell/targeted/projectile/magic_missile
 	log_name = "MM"
 
-/datum/spellbook_entry/disintegrate
+/*/datum/spellbook_entry/disintegrate
 	name = "Disintegrate"
 	spell_type = /obj/effect/proc_holder/spell/targeted/inflict_handler/disintegrate
 	log_name = "DG"
+	*/
 
 /datum/spellbook_entry/disabletech
 	name = "Disable Tech"
@@ -219,7 +220,7 @@
 		dat += "[surplus] left.<br>"
 	return dat
 
-/datum/spellbook_entry/item/staffchange
+/*datum/spellbook_entry/item/staffchange
 	name = "Staff of Change"
 	desc = "An artefact that spits bolts of coruscating energy which cause the target's very form to reshape itself."
 	item_path = /obj/item/weapon/gun/magic/staff/change
@@ -229,13 +230,13 @@
 	name = "Staff of Animation"
 	desc = "An arcane staff capable of shooting bolts of eldritch energy which cause inanimate objects to come to life. This magic doesn't affect machines."
 	item_path = /obj/item/weapon/gun/magic/staff/animate
-	log_name = "SA"
+	log_name = "SA"*/
 
-/datum/spellbook_entry/item/staffchaos
-	name = "Staff of Chaos"
-	desc = "A caprious tool that can fire all sorts of magic without any rhyme or reason. Using it on people you care about is not recommended."
-	item_path = /obj/item/weapon/gun/magic/staff/chaos
-	log_name = "SC"
+/datum/spellbook_entry/item/staffhealing
+	name = "Staff of Healing"
+	desc = "A stave best used for healing the sick and wounded. It can even return people from the dead."
+	item_path = /obj/item/weapon/gun/magic/staff/healing
+	log_name = "SH"
 
 /datum/spellbook_entry/item/staffdoor
 	name = "Staff of Door Creation"

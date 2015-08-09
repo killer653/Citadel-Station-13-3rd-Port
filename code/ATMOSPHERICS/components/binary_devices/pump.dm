@@ -159,11 +159,13 @@ Thus, the two variables affect pump operation are set in New():
 	ui_interact(user)
 	return
 
-/obj/machinery/atmospherics/binary/pump/Topic(href,href_list)
+/obj/machinery/atmospherics/binary/pump/Topic(href,href_list, var/mob/user as mob, params)
 	if(..()) return
 	if(href_list["power"])
 		on = !on
 		investigate_log("was turned [on ? "on" : "off"] by [key_name(usr)]", "atmos")
+		message_admins("Pump manipulated by [key_name(usr)](<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A>) (<A HREF='?_src_=holder;adminplayerobservefollow=\ref[user]'>FLW</A>) in ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
+		log_admin("[key_name(usr)] manipulated a pump at [x], [y], [z]")
 	if(href_list["set_press"])
 		switch(href_list["set_press"])
 			if ("max")
@@ -171,6 +173,8 @@ Thus, the two variables affect pump operation are set in New():
 			if ("set")
 				target_pressure = max(0, min(MAX_OUTPUT_PRESSURE, safe_input("Pressure control", "Enter new output pressure (0-[MAX_OUTPUT_PRESSURE] kPa)", target_pressure)))
 		investigate_log("was set to [target_pressure] kPa by [key_name(usr)]", "atmos")
+		message_admins("was set to [target_pressure] kPa by [key_name(usr)] at [loc.loc]")
+		log_admin("[key_name(usr)] manipulated a pump at [x], [y], [z]")
 	usr.set_machine(src)
 	src.update_icon()
 	src.updateUsrDialog()
@@ -186,5 +190,6 @@ Thus, the two variables affect pump operation are set in New():
 	if (!(stat & NOPOWER) && on)
 		user << "<span class='warning'>You cannot unwrench this [src], turn it off first!</span>"
 		return 1
+		message_admins("Pump unwrenched by [key_name_admin(user)](<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A>) (<A HREF='?_src_=holder;adminplayerobservefollow=\ref[user]'>FLW</A>) in ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
 	return ..()
 

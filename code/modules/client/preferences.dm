@@ -67,6 +67,7 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 	var/list/custom_names = list("clown", "mime", "ai", "cyborg", "religion", "deity")
 
 	var/list/flavor_texts = list()
+	var/flavor_text = ""
 
 	var/mutant_tail = "none"			//Vore Code
 	var/mutant_wing = "none"
@@ -243,7 +244,14 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 				dat += "<b>Socks:</b><BR><a href ='?_src_=prefs;preference=socks;task=input'>[socks]</a><BR>"
 				dat += "<b>Backpack:</b><BR><a href ='?_src_=prefs;preference=bag;task=input'>[backbaglist[backbag]]</a><BR></td>"
 
-				//dat += "<a href='byond://?src=\ref[user];preference=flavor_text;task=open'><b>Set Flavor Text</b></a><br>"
+				dat += "<a href='byond://?src=\ref[user];preference=flavor_text;task=input'><b>Set Flavor Text</b></a><br>"
+				if(lentext(flavor_text) <= 40)
+					if(!lentext(flavor_text))
+						dat += "\[...\]"
+					else
+						dat += "[flavor_text]"
+				else
+					dat += "[copytext(flavor_text, 1, 37)]...<br>"
 
 				dat += "<h3>Wings</h3>"
 
@@ -920,6 +928,15 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 					if("be_taur")
 						be_taur = !be_taur
 
+					if("flavor_text")
+						var/msg = input(usr,"Set the flavor text in your 'examine' verb. This can also be used for OOC notes and preferences!","Flavor Text",html_decode(flavor_text)) as message
+
+						if(msg != null)
+							msg = copytext(msg, 1, MAX_MESSAGE_LEN)
+							msg = html_encode(msg)
+
+							flavor_text = msg
+
 					/*if("tail_lizard")
 						var/new_tail
 						new_tail = input(user, "Choose your character's tail:", "Character Preference") as null|anything in tails_list_lizard
@@ -1134,6 +1151,8 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 		character.real_name = real_name
 		character.name = character.real_name
 
+		character.flavor_text = flavor_text
+
 		if(character.dna)
 			character.dna.real_name = character.real_name
 			if(pref_species != /datum/species/human && config.mutant_races)
@@ -1153,7 +1172,6 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 			character.dna.cock=p_cock
 			character.dna.vagina=p_vagina
 
-		//character.flavor_texts["general"] = flavor_texts["general"]
 
 		character.vore_banned_methods=vore_banned_methods
 		character.vore_extra_bans=vore_extra_bans

@@ -11,6 +11,11 @@
 	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
 	icon_state = "l_arm"
 
+/obj/item/robot_parts/robobutt
+	name = "Robot butt"
+	desc = "The best rear end technology we can offer."
+	icon_state = "robobutt"
+
 /obj/item/robot_parts/r_arm
 	name = "cyborg right arm"
 	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."

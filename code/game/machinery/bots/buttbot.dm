@@ -10,6 +10,7 @@
 	maxhealth = 25
 	// bubble_type = "h"
 	var/xeno = 0 //Do we hiss when buttspeech?
+	var/robo = 0
 	var/cooldown = 0
 	var/list/speech_buffer = list()
 	var/list/speech_list = list("butt.", "butts.", "ass.", "fart.", "assblast usa", "woop get an ass inspection", "woop") //Hilarious.
@@ -19,6 +20,9 @@
 	if(xeno)
 		icon_state = "buttbot_xeno"
 		speech_list = list("hissing butts", "hiss hiss motherfucker", "nice trophy nerd", "butt", "woop get an alien inspection")
+	if(robo)
+		icon_state = "buttbot_robo"
+		speech_list = list("beep boop butts", "beep boop motherfucker", "get polluted upon", "butt", "woop get a bot inspection")
 
 /obj/machinery/bot/buttbot/explode()
 	visible_message("<span class='userdanger'>[src] blows apart!</span>")
@@ -28,6 +32,8 @@
 		new /obj/item/robot_parts/l_arm(T)
 	if(xeno)
 		new /obj/item/organ/butt/xeno(T)
+	if(robo)
+		new /obj/item/robot_parts/robobutt(T)
 	else
 		new /obj/item/organ/butt(T)
 
@@ -90,6 +96,16 @@
 	icon_state = "xenobutt"
 	item_state = "xenobutt"
 
+/obj/item/robot_parts/robobutt
+	name = "robot butt"
+	desc = "as seen in holovision"
+	icon_state = "robobutt"
+	item_state = "robobutt"
+	throwforce = 5
+	force = 5
+	hitsound = 'sound/misc/fart.ogg'
+	throwhitsound = 'sound/misc/fart.ogg' //woo
+
 /obj/item/organ/butt/attackby(var/obj/item/W, mob/user as mob, params) // copypasting bot manufucturing process, im a lazy fuck
 
 	if(istype(W, /obj/item/robot_parts/l_arm) || istype(W, /obj/item/robot_parts/r_arm))
@@ -101,6 +117,21 @@
 			B.xeno = 1
 			B.icon_state = "buttbot_xeno"
 			B.speech_list = list("hissing butts", "hiss hiss motherfucker", "nice trophy nerd", "butt", "woop get an alien inspection")
+		user << "<span class='notice'>You add the robot arm to the butt and... What?</span>"
+		user.drop_item(src)
+		qdel(src)
+
+/obj/item/robot_parts/robobutt/attackby(var/obj/item/W, mob/user as mob, params) // copypasting bot manufucturing process, im a lazy fuck
+
+	if(istype(W, /obj/item/robot_parts/l_arm) || istype(W, /obj/item/robot_parts/r_arm))
+		user.drop_item()
+		del(W)
+		var/turf/T = get_turf(src.loc)
+		var/obj/machinery/bot/buttbot/B = new(T)
+		if(istype(src, /obj/item/robot_parts/robobutt))
+			B.robo = 1
+			B.icon_state = "buttbot_robo"
+			B.speech_list = list("beep boop butts", "beep boop motherfucker", "get polluted upon", "butt", "woop get a bot inspection", "f4rt")
 		user << "<span class='notice'>You add the robot arm to the butt and... What?</span>"
 		user.drop_item(src)
 		qdel(src)

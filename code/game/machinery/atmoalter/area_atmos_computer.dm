@@ -8,10 +8,10 @@
 	var/list/connectedscrubbers = new()
 	var/status = ""
 
-	var/range = 25
+	var/range = 250
 
 	//Simple variable to prevent me from doing attack_hand in both this and the child computer
-	var/zone = "This computer is working on a wireless range, the range is currently limited to 25 meters."
+	var/zone = "This computer is working on a wireless range, the range is currently limited to 250 meters."
 
 /obj/machinery/computer/area_atmos/New()
 	..()

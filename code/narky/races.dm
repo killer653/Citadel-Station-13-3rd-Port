@@ -121,6 +121,12 @@ datum
 			generic="pig"
 			adjective="curly"
 			tail=1
+		cow
+			name="cow"
+			id="cow"
+			say_mod = "moos"
+			generic="cow"
+			adjective="wise"
 		hippo
 			name="hippo"
 			id="hippo"
@@ -163,13 +169,13 @@ datum
 			generic="xeno"
 			adjective="phallic"
 			tail=1
-		//raccoon
-			//name="raccoon"
-			//id="raccoon"
-			//say_mod="churrs"
-			//generic="raccoon"
-			//adjective="stripy"
-			//tail=1
+		raccoon
+			name="raccoon"
+			id="raccoon"
+			say_mod="churrs"
+			generic="raccoon"
+			adjective="stripy"
+			tail=1
 		narky
 			//name="narwhal kitty"
 			id="narky"
@@ -403,11 +409,13 @@ var/list/mutant_tails = list(
 	"leporid"="leporid",
 	"panda"="ailurus",
 	"pig"="pig",
+	"cow"="cow",
 	)
 
 var/list/mutant_wings = list(
 	"none"=0,
 	"bat"="bat",
+	"feathery"="feathery",
 	)
 
 var/list/cock_list = list(
