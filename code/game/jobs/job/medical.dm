@@ -56,7 +56,7 @@ Medical Doctor
 	default_backpack = /obj/item/weapon/storage/backpack/medic
 	default_satchel = /obj/item/weapon/storage/backpack/satchel_med
 
-	access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics, access_mineral_storeroom)
+	access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_genetics, access_mineral_storeroom)
 	minimal_access = list(access_medical, access_morgue, access_surgery)
 
 /datum/job/doctor/equip_items(var/mob/living/carbon/human/H)
@@ -83,7 +83,7 @@ Chemist
 	default_pda = /obj/item/device/pda/chemist
 	default_headset = /obj/item/device/radio/headset/headset_med
 
-	access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics, access_mineral_storeroom)
+	access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_mineral_storeroom)
 	minimal_access = list(access_medical, access_chemistry, access_mineral_storeroom)
 
 /datum/job/chemist/equip_items(var/mob/living/carbon/human/H)
@@ -108,7 +108,7 @@ Geneticist
 	default_pda = /obj/item/device/pda/geneticist
 	default_headset = /obj/item/device/radio/headset/headset_medsci
 
-	access = list(access_medical, access_morgue, access_chemistry, access_virology, access_genetics, access_research, access_xenobiology, access_robotics, access_mineral_storeroom, access_tech_storage)
+	access = list(access_medical, access_morgue, access_chemistry, access_genetics, access_research, access_mineral_storeroom)
 	minimal_access = list(access_medical, access_morgue, access_genetics, access_research)
 
 /datum/job/geneticist/equip_items(var/mob/living/carbon/human/H)
@@ -136,7 +136,7 @@ Virologist
 	default_backpack = /obj/item/weapon/storage/backpack/medic
 	default_satchel = /obj/item/weapon/storage/backpack/satchel_med
 
-	access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics, access_mineral_storeroom)
+	access = list(access_medical, access_morgue, access_chemistry, access_virology, access_mineral_storeroom)
 	minimal_access = list(access_medical, access_virology, access_mineral_storeroom)
 
 /datum/job/virologist/equip_items(var/mob/living/carbon/human/H)

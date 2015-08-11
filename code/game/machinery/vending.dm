@@ -784,6 +784,16 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 					/obj/item/weapon/reagent_containers/pill/mutadone = 3,/obj/item/device/healthanalyzer = 2, /obj/item/device/sensor_device = 1,/obj/item/weapon/reagent_containers/glass/bottle/toxin = 2)
 	contraband = list(/obj/item/weapon/reagent_containers/pill/tox = 2,/obj/item/weapon/reagent_containers/pill/morphine = 2,/obj/item/weapon/reagent_containers/pill/charcoal = 3)
 
+/obj/machinery/vending/wallmed/public
+	name = "\improper Emergency NanoMed"
+	desc = "Wall-mounted Public First Aid dispenser."
+	icon_state = "wallmed"
+	icon_deny = "wallmed-deny"
+	req_access_txt = "0"
+	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
+	products = list(/obj/item/weapon/reagent_containers/pill/patch/styptic = 5,	/obj/item/weapon/reagent_containers/pill/patch/silver_sulf = 5, /obj/item/weapon/reagent_containers/pill/charcoal = 5, /obj/item/weapon/reagent_containers/hypospray/medipen = 5, /obj/item/device/healthanalyzer = 2, /obj/item/stack/medical/gauze = 2)
+	contraband = list(/obj/item/weapon/reagent_containers/pill/morphine = 2,/obj/item/weapon/reagent_containers/pill/charcoal = 3)
+
 /obj/machinery/vending/security
 	name = "\improper SecTech"
 	desc = "A security equipment vendor"
@@ -792,9 +802,9 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 	icon_deny = "sec-deny"
 	req_access_txt = "1"
 	products = list(/obj/item/weapon/restraints/handcuffs = 8,/obj/item/weapon/restraints/handcuffs/cable/zipties = 10,/obj/item/weapon/grenade/flashbang = 4,/obj/item/device/flash/handheld = 5,
-					/obj/item/weapon/reagent_containers/food/snacks/donut = 12,/obj/item/weapon/storage/box/evidence = 6,/obj/item/device/flashlight/seclite = 4)
+					/obj/item/weapon/reagent_containers/food/snacks/donut = 20,/obj/item/weapon/storage/box/evidence = 6,/obj/item/device/flashlight/seclite = 4)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/weapon/storage/fancy/donut_box = 2)
-	premium = list(/obj/item/weapon/coin/antagtoken = 1, /obj/item/weapon/reagent_containers/food/snacks/donut/premiumdonut = 3, /obj/item/weapon/storage/box/premiumstunbox = 2)
+	premium = list(/obj/item/weapon/coin/antagtoken = 1, /obj/item/weapon/reagent_containers/food/snacks/donut/premiumdonut = 3)
 
 /obj/machinery/vending/hydronutrients
 	name = "\improper NutriMax"
@@ -842,7 +852,7 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 	desc = "A vending machine for costumes."
 	icon_state = "theater"
 	icon_deny = "theater-deny"
-	req_access_txt = "46" //Theatre access needed, unless hacked.
+	req_access_txt = "0" //Theatre access needed, unless hacked.
 	product_slogans = "Dress for success!;Suited and booted!;It's show time!;Why leave style up to fate? Use AutoDrobe!"
 	vend_delay = 15
 	vend_reply = "Thank you for using AutoDrobe!"
