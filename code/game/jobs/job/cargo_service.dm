@@ -98,7 +98,7 @@ Bartender
 	default_headset = /obj/item/device/radio/headset/headset_srv
 
 	access = list(access_hydroponics, access_bar, access_kitchen, access_morgue, access_weapons)
-	minimal_access = list(access_bar)
+	minimal_access = list(access_bar, access_weapons)
 
 
 /datum/job/bartender/equip_items(var/mob/living/carbon/human/H)
