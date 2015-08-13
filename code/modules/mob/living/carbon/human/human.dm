@@ -25,7 +25,7 @@
 	internal_organs += new /obj/item/organ/appendix
 	internal_organs += new /obj/item/organ/heart
 	internal_organs += new /obj/item/organ/brain
-	internal_organs += new /obj/item/organ/butt
+//	internal_organs += new /obj/item/organ/butt
 
 	// for spawned humans; overwritten by other code
 	ready_dna(src)
@@ -244,29 +244,23 @@
 		dat += "<tr><td>&nbsp;&#8627;<B>Pockets:</B></td><td><A href='?src=\ref[src];pockets=left'>[(l_store && !(l_store.flags&ABSTRACT)) ? "Left (Full)" : "<font color=grey>Left (Empty)</font>"]</A>"
 		dat += "&nbsp;<A href='?src=\ref[src];pockets=right'>[(r_store && !(r_store.flags&ABSTRACT)) ? "Right (Full)" : "<font color=grey>Right (Empty)</font>"]</A></td></tr>"
 		dat += "<tr><td>&nbsp;&#8627;<B>ID:</B></td><td><A href='?src=\ref[src];item=[slot_wear_id]'>[(wear_id && !(wear_id.flags&ABSTRACT)) ? wear_id : "<font color=grey>Empty</font>"]</A></td></tr>"
-
 	if(handcuffed)
 		dat += "<tr><td><B>Handcuffed:</B> <A href='?src=\ref[src];item=[slot_handcuffed]'>Remove</A></td></tr>"
 	if(legcuffed)
 		dat += "<tr><td><A href='?src=\ref[src];item=[slot_legcuffed]'>Legcuffed</A></td></tr>"
-
 	dat += {"</table>
 	<A href='?src=\ref[user];mach_close=mob\ref[src]'>Close</A>
 	"}
-
 	var/datum/browser/popup = new(user, "mob\ref[src]", "[src]", 440, 510)
 	popup.set_content(dat)
 	popup.open()
-
 // called when something steps onto a human
 // this could be made more general, but for now just handle mulebot
 /mob/living/carbon/human/Crossed(var/atom/movable/AM)
 	var/obj/machinery/bot/mulebot/MB = AM
 	if(istype(MB))
 		MB.RunOver(src)
-
 	spreadFire(AM)
-
 //Added a safety check in case you want to shock a human mob directly through electrocute_act.
 /mob/living/carbon/human/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/safety = 0)
 	if(!safety)
@@ -279,10 +273,8 @@
 			if(stat == CONSCIOUS)
 				src << "<span class='notice'>You feel your heart beating again!</span>"
 	return ..(shock_damage,source,siemens_coeff)
-
 /mob/living/carbon/human/Topic(href, href_list)
 	if(usr.canUseTopic(src, BE_CLOSE, NO_DEXTERY))
-
 		if(href_list["embedded_object"])
 			var/obj/item/I = locate(href_list["embedded_object"])
 			var/obj/item/organ/limb/L = locate(href_list["embedded_limb"])
@@ -302,13 +294,11 @@
 				if(!has_embedded_objects())
 					clear_alert("embeddedobject")
 			return
-
 		if(href_list["item"])
 			var/slot = text2num(href_list["item"])
 			if(slot in check_obscured_slots())
 				usr << "<span class='warning'>You can't reach that! Something is covering it.</span>"
 				return
-
 		if(href_list["pockets"])
 			var/pocket_side = href_list["pockets"]
 			var/pocket_id = (pocket_side == "right" ? slot_r_store : slot_l_store)
@@ -602,6 +592,7 @@
 
 		return threatcount
 
+
 	//Check for ID
 	var/obj/item/weapon/card/id/idcard = get_idcard()
 	if(judgebot.idcheck && !idcard && name=="Unknown")
@@ -615,7 +606,7 @@
 			if(judgebot.check_for_weapons(r_hand))
 				threatcount += 4
 			if(judgebot.check_for_weapons(belt))
-				threatcount += 2
+				threatcount += 3
 
 	//Check for arrest warrant
 	if(judgebot.check_records)
@@ -631,8 +622,8 @@
 					threatcount += 2
 
 	//Check for dresscode violations
-	if(istype(head, /obj/item/clothing/head/wizard) || istype(head, /obj/item/clothing/head/helmet/space/hardsuit/wizard))
-		threatcount += 2
+	if(istype(head, /obj/item/clothing/head/wizard) || istype(head, /obj/item/clothing/head/helmet/space/hardsuit/wizard) || istype(head, /obj/item/clothing/head/helmet/space/syndicate) || istype(head, /obj/item/clothing/head/helmet/space/hardsuit/syndi))
+		threatcount += 4
 
 	//Check for nonhuman scum
 	if(dna && dna.species.id && dna.species.id != "human")
@@ -640,11 +631,11 @@
 
 	//Loyalty implants imply trustworthyness
 	if(isloyal(src))
-		threatcount -= 1
+		threatcount -= 2
 
 	//Agent cards lower threatlevel.
 	if(istype(idcard, /obj/item/weapon/card/id/syndicate))
-		threatcount -= 5
+		threatcount -= 1
 
 	return threatcount
 

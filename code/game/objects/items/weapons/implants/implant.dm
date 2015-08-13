@@ -228,19 +228,19 @@
 
 /obj/item/weapon/implant/loyalty/implanted(mob/target)
 	..()
-	if((target.mind in (ticker.mode.head_revolutionaries | ticker.mode.get_gang_bosses())) || is_shadow_or_thrall(target))
+	if((target.mind in (ticker.mode.head_revolutionaries | ticker.mode.get_gang_bosses() | ticker.mode.traitors | ticker.mode.syndicates)) || is_shadow_or_thrall(target))
 		target.visible_message("<span class='warning'>[target] seems to resist the implant!</span>", "<span class='warning'>You feel the corporate tendrils of Nanotrasen try to invade your mind!</span>")
 		return 0
 	if(target.mind in ticker.mode.get_gangsters())
 		ticker.mode.remove_gangster(target.mind)
-		target.visible_message("<span class='warning'>[src] was destroyed in the process!</span>", "<span class='notice'>You feel a surge of loyalty towards Nanotrasen.</span>")
+		target.visible_message("<span class='warning'>[src] was destroyed in the process!</span>", "<span class='notice'>You feel a surge of loyalty towards Nanotrasen. Your mind is free.</span>")
 		return 0
 	if(target.mind in ticker.mode.revolutionaries)
 		ticker.mode.remove_revolutionary(target.mind)
 	if(target.mind in ticker.mode.cult)
 		target << "<span class='warning'>You feel the corporate tendrils of Nanotrasen try to invade your mind!</span>"
 	else
-		target << "<span class='notice'>You feel a surge of loyalty towards Nanotrasen.</span>"
+		target << "<span class='notice'>You feel a surge of loyalty towards Nanotrasen. Your mind is now warded from most corruption.</span>"
 	return 1
 
 /obj/item/weapon/implant/loyalty/Destroy()

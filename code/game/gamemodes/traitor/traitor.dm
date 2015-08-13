@@ -11,7 +11,7 @@
 	config_tag = "traitor"
 	antag_flag = BE_TRAITOR
 	restricted_jobs = list("Cyborg")//They are part of the AI if he is traitor so are they, they use to get double chances
-	protected_jobs = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain")//AI", Currently out of the list as malf does not work for shit
+	protected_jobs = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel")//AI", Currently out of the list as malf does not work for shit
 	required_players = 0
 	required_enemies = 1
 	recommended_enemies = 4
@@ -124,12 +124,12 @@
 					destroy_objective.owner = traitor
 					destroy_objective.find_target()
 					traitor.objectives += destroy_objective
-				else if(prob(30))
+				else if(prob(0))
 					var/datum/objective/maroon/maroon_objective = new
 					maroon_objective.owner = traitor
 					maroon_objective.find_target()
 					traitor.objectives += maroon_objective
-				else
+				else if(prob(0))
 					var/datum/objective/assassinate/kill_objective = new
 					kill_objective.owner = traitor
 					kill_objective.find_target()

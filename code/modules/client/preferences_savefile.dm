@@ -212,6 +212,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["cyborg_name"]		>> custom_names["cyborg"]
 	S["religion_name"]		>> custom_names["religion"]
 	S["deity_name"]			>> custom_names["deity"]
+	S["species"]			>> pref_species
 
 	//Customs
 	S["mutant_tail"]		>> mutant_tail
@@ -241,7 +242,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["job_engsec_low"]		>> job_engsec_low
 
 	//Flavour Text
-	//S["flavor_texts_general"]	<< flavor_texts["general"]
+	S["flavor_texts_general"]	<< flavor_texts["general"]
 
 	return 1
 
@@ -361,7 +362,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["cyborg_name"]		<< custom_names["cyborg"]
 	S["religion_name"]		<< custom_names["religion"]
 	S["deity_name"]			<< custom_names["deity"]
-
+	S["species"]			<< pref_species
 	//Custom
 	S["mutant_tail"]		<< mutant_tail
 	S["mutant_wing"]		<< mutant_wing
@@ -388,7 +389,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["job_engsec_low"]		<< job_engsec_low
 
 	//Flavour Text
-	//S["flavor_texts_general"]	<< flavor_texts["general"]
+	S["flavor_texts_general"]	<< flavor_texts["general"]
 
 	return 1
 

@@ -46,11 +46,17 @@
 /obj/machinery/suit_storage_unit/engine
 	SUIT_TYPE = /obj/item/clothing/suit/space/hardsuit/engine
 	MASK_TYPE = /obj/item/clothing/mask/breath
+	STORAGE_TYPE= /obj/item/clothing/shoes/magboots
 
 /obj/machinery/suit_storage_unit/ce
 	SUIT_TYPE = /obj/item/clothing/suit/space/hardsuit/engine/elite
 	MASK_TYPE = /obj/item/clothing/mask/breath
 	STORAGE_TYPE= /obj/item/clothing/shoes/magboots/advance
+
+/obj/machinery/suit_storage_unit/construct
+	SUIT_TYPE = /obj/item/clothing/suit/space/hardsuit/engine/construct
+	MASK_TYPE = /obj/item/clothing/mask/breath
+	STORAGE_TYPE= /obj/item/clothing/shoes/magboots
 
 /obj/machinery/suit_storage_unit/security
 	SUIT_TYPE = /obj/item/clothing/suit/space/hardsuit/security
@@ -72,6 +78,11 @@
 /obj/machinery/suit_storage_unit/cmo
 	SUIT_TYPE = /obj/item/clothing/suit/space/hardsuit/medical
 	MASK_TYPE = /obj/item/clothing/mask/breath
+
+/obj/machinery/suit_storage_unit/rd
+	SUIT_TYPE = /obj/item/clothing/suit/space/hardsuit/rd
+	MASK_TYPE = /obj/item/clothing/mask/breath
+	STORAGE_TYPE = /obj/item/weapon/tank/internals/oxygen/red
 
 /obj/machinery/suit_storage_unit/syndicate
 	SUIT_TYPE = /obj/item/clothing/suit/space/hardsuit/syndi

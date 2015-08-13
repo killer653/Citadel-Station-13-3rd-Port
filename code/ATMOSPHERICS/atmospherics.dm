@@ -126,6 +126,9 @@ Pipelines + Other Objects -> Pipe network
 				"<span class='notice'>You unfasten \the [src].</span>", \
 				"<span class='italics'>You hear ratchet.</span>")
 			investigate_log("was <span class='warning'>REMOVED</span> by [key_name(usr)]", "atmos")
+			message_admins("Pump manipulated by [key_name(usr)](<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A>) (<A HREF='?_src_=holder;adminplayerobservefollow=\ref[user]'>FLW</A>) in ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
+			log_admin("[key_name(usr)] manipulated a pump at [x], [y], [z]")
+
 
 			//You unwrenched a pipe full of pressure? let's splat you into the wall silly.
 			if(unsafe_wrenching)

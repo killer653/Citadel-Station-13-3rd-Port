@@ -29,6 +29,7 @@
 			H.update_hair(0)
 			H.apply_damage(25,"brute","head")
 		add_logs(user, target, "debrained", addition="INTENT: [uppertext(user.a_intent)]")
+		message_admins(user, target, "debrained", addition="INTENT: [uppertext(user.a_intent)]")
 	else
 		user << "<span class='warning'>You can't find a brain in [target]!</span>"
 	return 1

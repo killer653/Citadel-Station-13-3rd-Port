@@ -13,7 +13,7 @@ obj/vore_preferences
 	if(!target) return
 	for(var/obj/vore_preferences/VP in world)
 		if(VP!=src&&VP.target==target)
-			if(target.ckey=="jayehh"|| "poojawa"|| "nebulacallisto"|| "leonleonardo"|| "brimcon"|| "cyrema"|| "mrsebbi"|| "subtumaka")
+			if(target.ckey=="jayehh" && "poojawa" && "nebulacallisto" && "leonleonardo" && "brimcon" && "cyrema" && "mrsebbi" && "subtumaka")
 				target << "<B>DEBUG:</B> Deleted an old vore panel with a tab of [VP.current_tab]."
 					//VP.loop=0
 	return

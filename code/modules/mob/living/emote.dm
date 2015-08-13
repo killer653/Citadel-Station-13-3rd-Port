@@ -6,6 +6,12 @@
 	if(stat)
 		return
 
+	var/verbs_use = pick_list("npc_chatter.txt","verbs_use")
+	var/verbs_touch = pick_list("npc_chatter.txt","verbs_touch")
+	var/nouns_insult = pick_list("npc_chatter.txt","nouns_insult")
+	var/nouns_body = pick_list("npc_chatter.txt","nouns_body")
+	var/adjective_insult = pick_list("npc_chatter.txt","adjective_insult")
+	var/curse_words = pick_list("npc_chatter.txt","curse_words")
 	var/param = null
 
 	if (findtext(act, "-", 1, null))
@@ -121,6 +127,14 @@
 
 		if ("grin")
 			message = "<B>[src]</B> grins."
+			m_type = 1
+
+		if ("insult")
+
+			message = pick("<B>[src]</B> yells, 'I'm going to [verbs_use] you, you [adjective_insult] [nouns_insult]!'",
+			"<B>[src]</B> yells, 'Rend and [verbs_touch], Rend and [verbs_use]!'",
+			"<B>[src]</B> yells, 'You [nouns_insult], I'm going to [verbs_use] you right in the [nouns_body]. <B>JUST YOU WAIT!</B>'",
+			"<B>[src]</B> yells, '<B>You [curse_words]!!</B>'")
 			m_type = 1
 
 		if ("jump")
@@ -254,6 +268,8 @@
 			message = "<B>[src]</B> yawns."
 			m_type = 2
 
+
+
 		if ("help")
 			src << "Help for emotes. You can use these emotes with say \"*emote\":\n\naflap, blush, bow-(none)/mob, burp, choke, chuckle, clap, collapse, cough, dance, deathgasp, drool, flap, frown, gasp, giggle, glare-(none)/mob, grin, jump, laugh, look, me, nod, point-atom, scream, shake, sigh, sit, smile, sneeze, sniff, snore, stare-(none)/mob, sulk, sway, tremble, twitch, twitch_s, wave, whimper, yawn"
 
@@ -282,3 +298,11 @@
 			visible_message(message)
 		else if (m_type & 2)
 			audible_message(message)
+
+
+/mob/living/carbon/human/verb/set_flavor()
+	set name = "Set Flavour Text"
+	set desc = "Sets an extended description of your character's features."
+	set category = "IC"
+
+	flavor_text =  copytext(sanitize(input(usr, "Please enter your new flavour text.", "Flavour text", null)  as text), 1)

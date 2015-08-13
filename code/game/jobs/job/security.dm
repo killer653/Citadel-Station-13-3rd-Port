@@ -28,11 +28,11 @@ Head of Security
 
 	access = list(access_security, access_sec_doors, access_brig, access_armory, access_court, access_weapons,
 			            access_forensics_lockers, access_morgue, access_maint_tunnels, access_all_personal_lockers,
-			            access_research, access_engine, access_mining, access_medical, access_construction, access_mailsorting,
+			            access_research, access_engine, access_mining, access_medical, access_construction, access_atmospherics, access_mailsorting,
 			            access_heads, access_hos, access_RC_announce, access_keycard_auth, access_gateway)
 	minimal_access = list(access_security, access_sec_doors, access_brig, access_armory, access_court, access_weapons,
 			            access_forensics_lockers, access_morgue, access_maint_tunnels, access_all_personal_lockers,
-			            access_research, access_engine, access_mining, access_medical, access_construction, access_mailsorting,
+			            access_research, access_engine, access_mining, access_medical, access_construction, access_atmospherics, access_mailsorting,
 			            access_heads, access_hos, access_RC_announce, access_keycard_auth, access_gateway)
 
 /datum/job/hos/equip_items(var/mob/living/carbon/human/H)
@@ -44,11 +44,8 @@ Head of Security
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/security/sunglasses(H), slot_glasses)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/gun(H), slot_s_store)
 
-	if(H.backbag == 1)
-		H.equip_to_slot_or_del(new /obj/item/weapon/restraints/handcuffs(H), slot_l_store)
-	else
-		H.equip_to_slot_or_del(new /obj/item/weapon/restraints/handcuffs(H), slot_in_backpack)
-		H.equip_to_slot_or_del(new /obj/item/weapon/melee/classic_baton/telescopic(H), slot_in_backpack)
+	H.equip_to_slot_or_del(new /obj/item/weapon/restraints/handcuffs(H), slot_in_backpack)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/classic_baton/telescopic(H), slot_in_backpack)
 
 	var/obj/item/weapon/implant/loyalty/L = new/obj/item/weapon/implant/loyalty(H)
 	L.imp_in = H
@@ -88,10 +85,7 @@ Warden
 	H.equip_to_slot_or_del(new /obj/item/device/flash/handheld(H), slot_l_store)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/gun/advtaser(H), slot_s_store)
 
-	if(H.backbag == 1)
-		H.equip_to_slot_or_del(new /obj/item/weapon/restraints/handcuffs(H), slot_l_hand)
-	else
-		H.equip_to_slot_or_del(new /obj/item/weapon/restraints/handcuffs(H), slot_in_backpack)
+	H.equip_to_slot_or_del(new /obj/item/weapon/restraints/handcuffs(H), slot_in_backpack)
 
 	var/obj/item/weapon/implant/loyalty/L = new/obj/item/weapon/implant/loyalty(H)
 	L.imp_in = H
@@ -137,13 +131,9 @@ Detective
 	cig.light("")
 	H.equip_to_slot_or_del(cig, slot_wear_mask)
 
-	if(H.backbag == 1)//Why cant some of these things spawn in his office?
-		H.equip_to_slot_or_del(new /obj/item/weapon/storage/box/evidence(H), slot_l_hand)
-		H.equip_to_slot_or_del(new /obj/item/device/detective_scanner(H), slot_r_store)
-	else
-		H.equip_to_slot_or_del(new /obj/item/weapon/storage/box/evidence(H), slot_in_backpack)
-		H.equip_to_slot_or_del(new /obj/item/device/detective_scanner(H), slot_in_backpack)
-		H.equip_to_slot_or_del(new /obj/item/weapon/melee/classic_baton/telescopic(H), slot_in_backpack)
+	H.equip_to_slot_or_del(new /obj/item/weapon/storage/box/evidence(H), slot_in_backpack)
+	H.equip_to_slot_or_del(new /obj/item/device/detective_scanner(H), slot_in_backpack)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/classic_baton/telescopic(H), slot_in_backpack)
 
 	var/obj/item/weapon/implant/loyalty/L = new/obj/item/weapon/implant/loyalty(H)
 	L.imp_in = H
@@ -184,12 +174,8 @@ Security Officer
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/gun/advtaser(H), slot_s_store)
 	H.equip_to_slot_or_del(new /obj/item/device/flash/handheld(H), slot_l_store)
 
-	if(H.backbag == 1)
-		H.equip_to_slot_or_del(new /obj/item/weapon/restraints/handcuffs(H), slot_r_store)
-		H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton/loaded(H), slot_l_hand)
-	else
-		H.equip_to_slot_or_del(new /obj/item/weapon/restraints/handcuffs(H), slot_in_backpack)
-		H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton/loaded(H), slot_in_backpack)
+	H.equip_to_slot_or_del(new /obj/item/weapon/restraints/handcuffs(H), slot_in_backpack)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton/loaded(H), slot_in_backpack)
 
 	var/obj/item/weapon/implant/loyalty/L = new/obj/item/weapon/implant/loyalty(H)
 	L.imp_in = H
