@@ -6,4 +6,5 @@
 - Added color layers for GSD taur.
 - Added husky taur form with color layers.
 - Added cow taur form with color layers.
+- Updated raccoons.
 - Added loaderbot sprite and transform animation. (no code yet)
