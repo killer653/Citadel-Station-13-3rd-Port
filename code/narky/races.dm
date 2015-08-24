@@ -10,6 +10,13 @@ datum
 			generic="human"
 			adjective="ordinary"
 			taur="horse"
+		naga
+			name="naga"
+			id="naga"
+			generic="human"
+			adjective="noodly"
+			taur="naga"
+			tail=1
 		fox
 			name="fox"
 			id="fox"
@@ -84,6 +91,7 @@ datum
 			generic="canine"
 			adjective="shaggy"
 			tail=1
+			taur=1
 		squirrel
 			name="squirrel"
 			id="squirrel"
@@ -150,6 +158,16 @@ datum
 			adjective="feathery"
 			tail=1
 			attack_verb = "whack"
+
+		corvid
+			name="corvid"
+			id="corvid"
+			say_mod = "caws"
+			generic="bird"
+			adjective="mask piercing"
+			tail=1
+			attack_verb = "whack"
+
 		jelly
 			name="jelly"
 			id="jelly"

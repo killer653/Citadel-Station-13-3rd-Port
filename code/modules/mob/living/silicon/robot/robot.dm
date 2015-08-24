@@ -140,7 +140,7 @@
 /mob/living/silicon/robot/proc/pick_module()
 	if(module)
 		return
-	designation = input("Please, select a module!", "Robot", null, null) in list("Standard", "Engineering", "Medical", "Miner", "Janitor","Service", "Security")
+	designation = input("Please, select a module!", "Robot", null, null) in list("Standard", "Engineering", "Medical", "Miner", "Janitor","Service", "Security", "FIX Loader")
 	var/animation_length=0
 	if(module)
 		return
@@ -207,6 +207,14 @@
 			hands.icon_state = "engineer"
 			icon_state = "engiborg"
 			animation_length = 45
+			modtype = "Eng"
+			feedback_inc("cyborg_engineering",1)
+
+		if("FIX Loader")
+			module = new /obj/item/weapon/robot_module/fixloader(src)
+			hands.icon_state = "engineer"
+			icon_state = "fixloader"
+			animation_length = 27
 			modtype = "Eng"
 			feedback_inc("cyborg_engineering",1)
 
@@ -730,6 +738,8 @@
 				overlays += "eyes-secborg"
 			if("engiborg")
 				overlays += "eyes-engiborg"
+			if("fixloader")
+				overlays += "eyes-fixloader"
 			if("janiborg")
 				overlays += "eyes-janiborg"
 			if("minerborg")
