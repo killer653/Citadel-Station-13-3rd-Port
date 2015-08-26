@@ -8,6 +8,8 @@ The ways a verk has been mangling these files.
 -Added naga race. Requires enabling taur form. (can be used as a freely colorable human without tho.)
 -Added wolf taur form with color layers.
 -FIX Loader is now a usable borg module. (Functions as an alternative engi borg for now.)
+-Removed tails from lizard base sprites.
+-Lizard now uses naga as taur form.
 
 2nd strike.
 - Tweaked husky sprites to fix earlier bloopers.

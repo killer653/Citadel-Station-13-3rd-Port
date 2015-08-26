@@ -15,7 +15,7 @@ datum
 			id="naga"
 			generic="human"
 			adjective="noodly"
-			taur="naga"
+			taur=1
 			tail=1
 		fox
 			name="fox"
@@ -34,6 +34,7 @@ datum
 			id="lizard"
 			generic="reptile"
 			adjective="scaled"
+			taur="naga"
 			tail=1
 		tajaran
 			name="tajaran"
